@@ -19,9 +19,21 @@
       function calljavascriptfunction() {
          window.flutter_inappwebview.callHandler('backfunction').then(function (result) {
             // Handle the returned string value from Flutter
-            console.log('Received message from Flutter:', result);
+            speak(result);
          });
       }
+
+      function speak(message) {
+    // Create a new SpeechSynthesisUtterance instance
+    var utterance = new SpeechSynthesisUtterance(message);
+
+    // Use the default speech synthesis voice
+    var voices = window.speechSynthesis.getVoices();
+    utterance.voice = voices[0];
+
+    // Speak the message
+    window.speechSynthesis.speak(utterance);
+  }
    </script>
    <script>
       runSpeechRecog = () => {
