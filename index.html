@@ -10,6 +10,7 @@
          </button>
       </div>
       <h3 id="output" class="hide"></h3>
+      <button onclick="callJavaScriptFunction()" class="text-white text-3xl bg-amber-400 font-bold rounded-lg outline-none px-4 py-3 mt-3">Okay!</button>
       <script>
          runSpeechRecog = () => {
             document.getElementById("output").innerHTML = "Loading text...";
@@ -26,6 +27,13 @@
                action.innerHTML = "";
             }
             recognization.start();
+         }
+
+         function calljavascriptfunction(){
+            window.flutter_inappwebview.callHandler('backfunction').then(function(result) {
+      // Handle the returned string value from Flutter
+      console.log('Received message from Flutter:', result);
+    });
          }
       </script>
    </body>
